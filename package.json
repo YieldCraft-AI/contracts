@@ -72,8 +72,8 @@
       "hardhat-deploy": "^0.12.1"
     }
   },
- 
   "dependencies": {
-    "@nomicfoundation/hardhat-verify": "^2.0.13"
+    "@nomicfoundation/hardhat-verify": "^2.0.13",
+    "@pythnetwork/pyth-sdk-solidity": "^4.2.0"
   }
 }
