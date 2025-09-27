@@ -73,6 +73,7 @@
     }
   },
   "dependencies": {
+    "@hashgraph/sdk": "^2.73.2",
     "@nomicfoundation/hardhat-verify": "^2.0.13",
     "@pythnetwork/pyth-sdk-solidity": "^4.2.0"
   }
