@@ -1,24 +1,13 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.23;
+pragma solidity ^0.8.24;
 
 interface IVault {
     function previewDeposit(
         uint256 _amount0,
         uint256 _amount1
-    )
-        external
-        view
-        returns (
-            uint256 shares,
-            uint256 amount0,
-            uint256 amount1,
-            uint256 fee0,
-            uint256 fee1
-        );
+    ) external view returns (uint256 shares, uint256 amount0, uint256 amount1, uint256 fee0, uint256 fee1);
 
-    function previewWithdraw(
-        uint256 shares
-    ) external view returns (uint256 amount0, uint256 amount1);
+    function previewWithdraw(uint256 shares) external view returns (uint256 amount0, uint256 amount1);
 
     function strategy() external view returns (address);
 
@@ -28,11 +17,7 @@ interface IVault {
 
     function balances() external view returns (uint256, uint256);
 
-    function deposit(
-        uint256 amount0,
-        uint256 amount1,
-        uint256 minShares
-    ) external;
+    function deposit(uint256 amount0, uint256 amount1, uint256 minShares) external;
 
     function isCalm() external view returns (bool);
 }

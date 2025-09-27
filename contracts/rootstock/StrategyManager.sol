@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.23;
+pragma solidity ^0.8.24;
 
-import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
-import {Pausable} from "@openzeppelin/contracts/utils/Pausable.sol";
+import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
+import { Pausable } from "@openzeppelin/contracts/utils/Pausable.sol";
 
 contract StratManager is Ownable, Pausable {
     struct CommonAddresses {
@@ -42,9 +42,7 @@ contract StratManager is Ownable, Pausable {
     error NotManager();
     error StrategyPaused();
 
-    constructor(
-        CommonAddresses memory _commonAddresses
-    ) Ownable(msg.sender) Pausable() {
+    constructor(CommonAddresses memory _commonAddresses) Ownable(msg.sender) Pausable() {
         vault = _commonAddresses.vault;
         unirouter = _commonAddresses.unirouter;
     }
@@ -101,17 +99,9 @@ contract StratManager is Ownable, Pausable {
      * @return locked0 The amount of token0 locked
      * @return locked1 The amount of token1 locked
      */
-    function lockedProfit()
-        public
-        view
-        virtual
-        returns (uint256 locked0, uint256 locked1)
-    {
+    function lockedProfit() public view virtual returns (uint256 locked0, uint256 locked1) {
         uint256 elapsed = block.timestamp - lastHarvest;
         uint256 remaining = elapsed < DURATION ? DURATION - elapsed : 0;
-        return (
-            (totalLocked0 * remaining) / DURATION,
-            (totalLocked1 * remaining) / DURATION
-        );
+        return ((totalLocked0 * remaining) / DURATION, (totalLocked1 * remaining) / DURATION);
     }
 }
